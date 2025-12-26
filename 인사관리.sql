@@ -1,8 +1,12 @@
-SELECT employee_id, last_name, job_id, salary
-FROM   employees
-WHERE  salary >=10000
-AND    job_id LIKE '%MAN%';
-SELECT employee_id, last_name, job_id, salary
-FROM   employees
-WHERE  salary >= 10000
-OR     job_id LIKE '%MAN%';
+DELETE FROM departments
+WHERE  department_name = 'Finance';
+DELETE FROM sales_reps;
+
+DELETE FROM employees
+WHERE  department_id =
+                       (SELECT department_id
+                        FROM   departments
+                        WHERE  department_name LIKE '%Public%');
+
+DELETE FROM departments
+WHERE department_id = 60;
